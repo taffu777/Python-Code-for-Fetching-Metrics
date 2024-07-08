@@ -5,10 +5,10 @@ from prometheus_client import start_http_server, Gauge
 
 # Define OCI configuration variables
 config = {
-    "user": "ocid1.user.oc1..aaaaaaaawh7aoclqscvctiilzpjuq5a22pidd5h6puzfjpyvh25akhlywxca",
-    "fingerprint": "cd:1e:68:8b:83:17:24:f6:21:87:ca:e6:0f:f6:bc:b8",
-    "key_file": "/home/opc/secret_key.pem",
-    "tenancy": "ocid1.tenancy.oc1..aaaaaaaaxfjlk5goxkr7nvkspls4jequj4xarl6ovdxsejmpbmzhbuzu7laq",
+    "user": "user_id",
+    "fingerprint": "finegrprint",
+    "key_file": "path of pem.key",
+    "tenancy": "tenancy_id",
     "region": "us-ashburn-1"
 }
 
@@ -32,27 +32,27 @@ backend_set_health_gauge = Gauge('oci_backend_set_health', 'Health status of OCI
 # List of instances, load balancers, and databases
 instances = [
     {
-        "instance_id": "ocid1.instance.oc1.iad.anuwcljsq2kknyicrh4xbyhcielld4g2qrreu22e3go6ngm7u7gny4jzmpfq",
-        "load_balancer_id": "ocid1.loadbalancer.oc1.iad.aaaaaaaawum7kzb4kgtphwe3o5ff63xrxicg3qphapzciqxzfwlny5mu5knq"
+        "instance_id": "instace_id",
+        "load_balancer_id": "lb_id"
     },
     {
-        "instance_id": "ocid1.instance.oc1.iad.anuwcljsq2kknyic65rjmyoowegzbnukwc7jkjahkgrcta3jebdgcoo4yo4a",
-        "load_balancer_id": "ocid1.loadbalancer.oc1.iad.aaaaaaaawum7kzb4kgtphwe3o5ff63xrxicg3qphapzciqxzfwlny5mu5knq"
+        "instance_id": "instnace_id",
+        "load_balancer_id": "lb_id"
     },
     {
-        "instance_id": "ocid1.instance.oc1.iad.anuwcljsq2kknyiciqswhqmy4q6p2kzmxqb3ma7vqm2wjlyiipx3ed5lywhq",
-        "load_balancer_id": "ocid1.loadbalancer.oc1.iad.aaaaaaaawum7kzb4kgtphwe3o5ff63xrxicg3qphapzciqxzfwlny5mu5knq"
+        "instance_id": "instance_id",
+        "load_balancer_id": "lb_id"
     },
     {
-        "instance_id": "ocid1.instance.oc1.iad.anuwcljsq2kknyickvaiqeetj466zbmvnqyktf7vnrj5suuwsl6dyqgwnooq",
-        "load_balancer_id": "ocid1.loadbalancer.oc1.iad.aaaaaaaawum7kzb4kgtphwe3o5ff63xrxicg3qphapzciqxzfwlny5mu5knq"
+        "instance_id": "instnace_id",
+        "load_balancer_id": "lb_id"
 
     }
 ]
 
 databases = [
     {
-        "db_id": "ocid1.database.oc1.iad.anuwcljsq2kknyiatkvpvh2v2fexk2a3dit3cfbv24j7eo64mnrzafp3ptoa"
+        "db_id": "database_id"
     }
 ]
 
@@ -202,7 +202,7 @@ def fetch_db_memory_utilization(db_id):
 
 if __name__ == '__main__':
     # Start Prometheus metrics server
-    start_http_server(8000)
+    start_http_server(port_no)
 
     while True:
         for instance in instances:
